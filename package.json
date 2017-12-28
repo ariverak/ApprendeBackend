@@ -1,0 +1,31 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "api rest cooprinsem",
+  "scripts": {
+    "start": "npm run build && npm run serve",
+    "build": "tsc",
+    "serve": "nodemon ./dist/init.js"
+  },
+  "author": "ipeters",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^8.0.31",
+    "async": "^2.1.2",
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.18.2",
+    "cryptr": "^2.0.0",
+    "express": "^4.15.4",
+    "helmet": "^3.8.1",
+    "jwt-simple": "^0.5.1",
+    "moment": "^2.18.1",
+    "morgan": "^1.8.2",
+    "mysql": "^2.14.1",
+    "reflect-metadata": "^0.1.10",
+    "typeorm": "0.0.11",
+    "typescript": "^2.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
