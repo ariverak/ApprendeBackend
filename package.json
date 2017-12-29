@@ -1,7 +1,7 @@
 {
-  "name": "api",
+  "name": "apprende",
   "version": "1.0.0",
-  "description": "api rest cooprinsem",
+  "description": "api rest apprende",
   "scripts": {
     "start": "npm run build && npm run serve",
     "build": "tsc",

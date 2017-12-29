@@ -12,7 +12,7 @@ const config  = {
         mysql: {
             dev: {
                 type: "mysql",
-                host: "xxx.xxx.xxx.xxx",
+                host: "201.217.241.114",
                 port: 3306,
                 username: "ipeters",
                 password: "1212",

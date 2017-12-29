@@ -1,9 +1,8 @@
-import {Entity,Column, PrimaryColumn,Table,OneToMany,ManyToOne,JoinColumn} from "typeorm";
-import {AlumnoUsuario,AlumnoAsignatura,Curso} from "./Index"
+import {Entity,Column,Table,OneToMany,ManyToOne,JoinColumn, PrimaryGeneratedColumn} from "typeorm";
 @Entity()
 @Table("Alumno")
 export class Alumno {
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     Id: number;
     @Column("int")
     Rut: number;
@@ -11,12 +10,6 @@ export class Alumno {
     Nombre: string;
     @Column("string",{length : 60})
     Apellido: string;
-    @ManyToOne(type => Curso)
-    @JoinColumn({name: "IdCurso"}) 
-    Curso: Curso;
-    @OneToMany(type => AlumnoUsuario, alumnoUsuario => alumnoUsuario.Alumno) 
-    AlumnoUsuario: AlumnoUsuario[];
-    @OneToMany(type => AlumnoAsignatura, alumnoAsignatura => alumnoAsignatura.Alumno) 
-    AlumnoAsignatura: AlumnoAsignatura[];
-    
+    @Column("int")
+    IdCurso: number;
 }
