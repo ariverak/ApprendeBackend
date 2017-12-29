@@ -1,6 +1,6 @@
 const config  = {
     // server port
-    port : 4000,
+    port : 3003,
     encryp_secret : "secretomaximoenelmundo",
     //jwt claims
     jwtOptions : {
