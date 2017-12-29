@@ -14,6 +14,7 @@ export default (app) => {
 
     //trae los alumnos que posee el propietario del token
     alumnosRoutes.get("/",auth.authorize("User"),alumnosCtl.getAllAlumFromUsr);
+    alumnosRoutes.get("/curso/:id",auth.authorize("User"),alumnosCtl.getAllAlumFromUsrAndCurso);
     apiRoutes.use("/alumnos", alumnosRoutes);
    
     // routes para api usuarios
