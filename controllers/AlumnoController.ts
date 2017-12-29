@@ -8,8 +8,9 @@ export async function getAllAlumFromUsr(req, res, next) {
 
     let alumnos = await connection.getRepository(Entities.Alumno).
     createQueryBuilder("a").innerJoin("a.AlumnoUsuario", "au")
-        .innerJoin("au.Usuario", "u").where(`u.Nick = '${req.nick}'`).
-    select(["a.Nombre", "a.Apellido"]).getRawMany();
+        .innerJoin("au.Usuario", "u").where(`u.Nick = '${req.nick}'`)
+        .innerJoin("a.Curso", "c").
+    select(["a.Nombre", "a.Apellido","c.Grado","c.Letra"]).getRawMany();
     if (alumnos == null) {
         res.status(404).json({
             "error": "no existen alumnos"
