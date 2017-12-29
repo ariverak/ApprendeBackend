@@ -5,9 +5,10 @@ import {getConnection} from "typeorm";
 
 export async function getAllAlumFromUsr(req, res, next) {
     let connection = getConnection();
+
     let alumnos = await connection.getRepository(Entities.Alumno).
     createQueryBuilder("a").innerJoin("a.AlumnoUsuario", "au")
-        .innerJoin("au.Usuario", "u").where(`u.Nick = ${req.nick}`).
+        .innerJoin("au.Usuario", "u").where(`u.Nick = '${req.nick}'`).
     select(["a.Nombre", "a.Apellido"]).getRawMany();
     if (alumnos == null) {
         res.status(404).json({

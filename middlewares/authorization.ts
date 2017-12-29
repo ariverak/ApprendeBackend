@@ -23,8 +23,8 @@ export function authorize(rol: string) {
 
           let rolToken = cryptr.decrypt(payload.rol);
           if ( rolToken == rol) {
-            //pasa el run que viene en el token para pasarlo a la siguiente funcion
-            req.rut = cryptr.decrypt(payload.sub);
+            //pasa el nick que viene en el token para pasarlo a la siguiente funcion
+            req.nick = cryptr.decrypt(payload.sub);
 
             //si la fecha de expiracion es menor que la fecha actual, significa que expiro
             if (cryptr.decrypt(payload.exp) <= moment().unix()) {

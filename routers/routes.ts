@@ -11,7 +11,7 @@ export default (app) => {
     const usuarioRoutes = express.Router();
 
     //trae los alumnos que posee el propietario del token
-    alumnosRoutes.get("/",alumnosCtl.getAllAlum);
+    alumnosRoutes.get("/",auth.authorize("User"),alumnosCtl.getAllAlumFromUsr);
 
     // esta linea crea un middleware el cual crea la ruta /alumnos y embebe los verbos y rutas que asignamos a alumnosRoute
     apiRoutes.use("/alumnos", alumnosRoutes);
