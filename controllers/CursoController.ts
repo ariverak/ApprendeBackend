@@ -26,7 +26,7 @@ export async function getAllAsignaturasFromCurso(req, res, next) {
         .innerJoin("aa.Alumno", "al").innerJoin("al.Curso", "c")
         .innerJoin("c.DocenteCurso", "dc").innerJoin("dc.Docente", "d")
         .innerJoin("d.Usuario", "u").where(`u.Nick = '${req.nick}'`)
-        .andWhere(`c.Id = '${req.params.idCurso}'`)
+        .andWhere(`c.Id = '${req.params.id}'`)
         .select(["a.Id", "a.Nombre"]).groupBy("a.Nombre").getRawMany();
     if (asignaturas == null) {
         res.status(404).json({

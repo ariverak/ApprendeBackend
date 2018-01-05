@@ -28,7 +28,5 @@ export default (app) => {
      cursosRoutes.get(":id/asignaturas",auth.authorize("User"), cursosCtl.getAllAsignaturasFromCurso);
      apiRoutes.use("/cursos",cursosRoutes);
 
-
-
     app.use("/api", apiRoutes);
 };
