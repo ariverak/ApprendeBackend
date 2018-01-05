@@ -22,8 +22,8 @@ export default (app) => {
     apiRoutes.use("/usuarios",usuarioRoutes);
 
      // routes para api cursos
-     cursosRoutes.get("/:id", cursosCtl.getAllAlumFromCurso);
-     cursosRoutes.get("/", cursosCtl.getAllCursoFromDocente);
+     cursosRoutes.get("/:id",auth.authorize("User"), cursosCtl.getAllAlumFromCurso);
+     cursosRoutes.get("/",auth.authorize("User"), cursosCtl.getAllCursoFromDocente);
      apiRoutes.use("/cursos",cursosRoutes);
 
 

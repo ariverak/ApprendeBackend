@@ -1,5 +1,5 @@
 import {Entity,Column,Table,OneToMany,ManyToOne,JoinColumn, PrimaryGeneratedColumn} from "typeorm";
-import {AlumnoUsuario,Alumno} from "./Index";
+import {AlumnoUsuario,Alumno,DocenteCurso} from "./Index";
 @Entity()
 @Table("Curso")
 export class Curso {
@@ -12,6 +12,9 @@ export class Curso {
 
     @Column("string",{length : 1})
     Letra: string;
+
+    @OneToMany( type=> DocenteCurso, docenteCurso => docenteCurso.Curso)
+    DocenteCurso:DocenteCurso[];
 
     @OneToMany(type=>Alumno , alumno => alumno.Curso)
     Alumnos:Alumno[];

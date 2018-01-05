@@ -25,7 +25,6 @@ export function authorize(rol: string) {
           if ( rolToken == rol) {
             //pasa el nick que viene en el token para pasarlo a la siguiente funcion
             req.nick = cryptr.decrypt(payload.sub);
-
             //si la fecha de expiracion es menor que la fecha actual, significa que expiro
             if (cryptr.decrypt(payload.exp) <= moment().unix()) {
               return res.status(401).json({
