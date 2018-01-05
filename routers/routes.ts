@@ -25,7 +25,7 @@ export default (app) => {
      // routes para api cursos
      cursosRoutes.get("/:id",auth.authorize("User"), cursosCtl.getAllAlumFromCurso);
      cursosRoutes.get("/",auth.authorize("User"), cursosCtl.getAllCursoFromDocente);
-     cursosRoutes.get(":id/asignaturas",auth.authorize("User"), cursosCtl.getAllAsignaturasFromCurso);
+     cursosRoutes.get("/:id/asignaturas",auth.authorize("User"), cursosCtl.getAllAsignaturasFromCurso);
      apiRoutes.use("/cursos",cursosRoutes);
 
     app.use("/api", apiRoutes);
