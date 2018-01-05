@@ -18,6 +18,7 @@ export class Docente {
     @OneToMany( type=> DocenteCurso, docenteCurso => docenteCurso.Docente)
     DocenteCurso:DocenteCurso[];
 
+
     @ManyToOne( type=> Usuario, usuario => usuario.Docentes)
     @JoinColumn({name:"IdUsuario"})
     Usuario:Usuario;

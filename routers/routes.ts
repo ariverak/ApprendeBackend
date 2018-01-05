@@ -3,6 +3,7 @@ import * as auth from "../middlewares/authorization";
 import * as alumnosCtl from "../controllers/AlumnoController";
 import * as usuariosCtl from "../controllers/UsuarioController";
 import * as cursosCtl from "../controllers/CursoController";
+import * as asigCtl from "../controllers/AsignaturaController";
 // exportamos la funcion que utiliza posteriormeente el archivo init.ts para iniciar el encapsulamiento de
 // retun controller --> retorna route( app )
 export default (app) => {
@@ -11,6 +12,7 @@ export default (app) => {
     const alumnosRoutes = express.Router();
     const usuarioRoutes = express.Router();
     const cursosRoutes = express.Router();
+    const asignaturasRoutes = express.Router();
 
     //trae los alumnos que posee el propietario del token
     alumnosRoutes.get("/",auth.authorize("User"),alumnosCtl.getAllAlumFromUsr);
@@ -25,6 +27,10 @@ export default (app) => {
      cursosRoutes.get("/:id",auth.authorize("User"), cursosCtl.getAllAlumFromCurso);
      cursosRoutes.get("/",auth.authorize("User"), cursosCtl.getAllCursoFromDocente);
      apiRoutes.use("/cursos",cursosRoutes);
+
+      // routes para api asignaturas
+      asignaturasRoutes.get("/:idCurso",auth.authorize("User"), asigCtl.getAllAsignaturasFromCurso);
+      apiRoutes.use("/asignaturas",asignaturasRoutes);
 
 
     app.use("/api", apiRoutes);
