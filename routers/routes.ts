@@ -3,7 +3,6 @@ import * as auth from "../middlewares/authorization";
 import * as alumnosCtl from "../controllers/AlumnoController";
 import * as usuariosCtl from "../controllers/UsuarioController";
 import * as cursosCtl from "../controllers/CursoController";
-import * as asigCtl from "../controllers/AsignaturaController";
 // exportamos la funcion que utiliza posteriormeente el archivo init.ts para iniciar el encapsulamiento de
 // retun controller --> retorna route( app )
 export default (app) => {
@@ -26,11 +25,9 @@ export default (app) => {
      // routes para api cursos
      cursosRoutes.get("/:id",auth.authorize("User"), cursosCtl.getAllAlumFromCurso);
      cursosRoutes.get("/",auth.authorize("User"), cursosCtl.getAllCursoFromDocente);
+     cursosRoutes.get(":id/asignaturas",auth.authorize("User"), cursosCtl.getAllAsignaturasFromCurso);
      apiRoutes.use("/cursos",cursosRoutes);
 
-      // routes para api asignaturas
-      asignaturasRoutes.get("/:idCurso",auth.authorize("User"), asigCtl.getAllAsignaturasFromCurso);
-      apiRoutes.use("/asignaturas",asignaturasRoutes);
 
 
     app.use("/api", apiRoutes);
