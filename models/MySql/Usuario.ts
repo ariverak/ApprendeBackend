@@ -1,5 +1,5 @@
 import {Entity,Column,Table,OneToMany,ManyToOne,JoinColumn, PrimaryGeneratedColumn} from "typeorm";
-import {AlumnoUsuario} from "./Index";
+import {AlumnoUsuario,Docente} from "./Index";
 @Entity()
 @Table("Usuario")
 export class Usuario {
@@ -32,4 +32,7 @@ export class Usuario {
 
     @OneToMany( type=> AlumnoUsuario, alumnoUsuario => alumnoUsuario.Usuario)
     AlumnoUsuario:AlumnoUsuario[]
+
+    @OneToMany(type=>Docente , docente => docente.Usuario)
+    Docentes:Docente[];
 }

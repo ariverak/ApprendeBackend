@@ -23,6 +23,7 @@ export default (app) => {
 
      // routes para api cursos
      cursosRoutes.get("/:id", cursosCtl.getAllAlumFromCurso);
+     cursosRoutes.get("/", cursosCtl.getAllCursoFromDocente);
      apiRoutes.use("/cursos",cursosRoutes);
 
 
